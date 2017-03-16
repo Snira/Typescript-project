@@ -33,6 +33,8 @@ Je test een project altijd via http://localhost/mijnproject, en niet via file://
 - Kijk of je wijziging is doorgevoerd in het 'app.js' bestand.
 - Open het project via http://localhost om te zien of je wijziging is doorgevoerd.
 
+http://imgur.com/a/8Ow6T
+
 ### Uitleg bestanden
 - De DIST folder bevat de website : html, css en javascript. De javascript files worden automatisch gegenereerd.
 - De DEV folder bevat de typescript files. Dit zijn de files waarin je gaat programmeren.
