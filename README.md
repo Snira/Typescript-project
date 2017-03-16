@@ -1,12 +1,43 @@
-## Leeg VS Code Typescript project
+## Voorbereiding PRG04
 
-Dit is een leeg VS Code project met de volgende instellingen:
-- DIST folder bevat de website : html, css en javascript
-- DEV folder bevat de typescript files
-- tsconfig.json bevat instellingen voor het compileren naar javascript
+In PRG04 gaan we werken met Typescript en github. Installeer alvast de benodigde tools en kijk of je "Hello World" kan maken.
+
+### Typescript en Code Editor
+- [Installeer Node en NPM](https://nodejs.org/en/)
+- [Installeer Typescript](https://www.typescriptlang.org)
+- [Download Visual Studio Code](https://code.visualstudio.com)
+
+### Git en Github
+- [Installeer git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+- [Maak een github account](https://www.github.com)
+
+Als je niet bekend bent met git kan je deze tutorial volgen:
+- [Git tutorial](https://try.github.io/)
+
+### Localhost instellen
+Je test een project altijd via http://localhost/mijnproject, en niet via file://index.html. Localhost kan je instellen met:
+- MAMP of XAMPP (als je dit al eerder had geïnstalleerd)
+- [OS X native localhost](https://coolestguidesontheplanet.com/get-apache-mysql-php-and-phpmyadmin-working-on-macos-sierra/)
+- [Python Simple HTTP Server](http://www.pythonforbeginners.com/modules-in-python/how-to-use-simplehttpserver/)
+- [Browsersync](https://www.browsersync.io)
+
+## Hello World
+
+### Downloaden en editen
+- Clone de Week 0 repository
+`git clone https://github.com/HR-CMGT/PRG04-Week0.git`
+- Open het project in een webbrowser via localhost.
+- Open Visual Studio Code
+- Ga naar bestand > Open Folder. Open de folder die je net gecloned hebt. Zie screenshot!
+- Wijzig het bestand 'app.ts' en druk op CMD+SHIFT+B
+- Kijk of je wijziging is doorgevoerd in het 'app.js' bestand.
+- Open het project via http://localhost om te zien of je wijziging is doorgevoerd.
+
+### Uitleg bestanden
+- De DIST folder bevat de website : html, css en javascript. De javascript files worden automatisch gegenereerd.
+- De DEV folder bevat de typescript files. Dit zijn de files waarin je gaat programmeren.
+- tsconfig.json bevat instellingen voor het compileren naar javascript.
 - tasks.json bevat het 'build' commando. Dit voer je uit met CMD+SHIFT+B
 
 ## Links
-- [Project op github](https://github.com/HR-Programming/PRG04-Startproject)
-- [Download Visual Studio Code](https://code.visualstudio.com)
-- [Installeer Typescript](http://www.typescriptlang.org/docs/tutorial.html)
+- [PRG04 op github](https://github.com/HR-CMGT)
