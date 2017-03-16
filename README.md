@@ -28,10 +28,9 @@ Je test een project altijd via http://localhost/mijnproject, en niet via file://
 `git clone https://github.com/HR-CMGT/PRG04-Week0.git`
 - Open de DIST folder in een webbrowser via localhost: http://localhost/mijnprojecten/prg04-week0/dist/
 - Open Visual Studio Code
-- Ga naar bestand > Open Folder. Open de folder die je net gecloned hebt. Zie screenshot!
-- Wijzig het bestand 'app.ts' en druk op CMD+SHIFT+B
-- Kijk of je wijziging is doorgevoerd in het 'app.js' bestand.
-- Open het project via http://localhost om te zien of je wijziging is doorgevoerd.
+- Ga naar **File > Open Folder**. Open de PRG04-Week0 folder die je net gecloned hebt. Zie screenshot!
+- Wijzig het bestand 'message.ts' en druk op CMD+SHIFT+B
+- Refresh de browser om te zien of je wijziging is doorgevoerd.
 
 ![img](http://i.imgur.com/5LEA1E1.png)
 
