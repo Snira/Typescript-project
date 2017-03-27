@@ -15,21 +15,31 @@ Als je niet bekend bent met git kan je deze tutorial volgen:
 - [Git tutorial](https://try.github.io/)
 
 ### Localhost instellen
-Je test een project altijd via http://localhost/mijnproject, en niet via file://index.html. Localhost kan je instellen met:
+Je test een project altijd via http://localhost/.../project, en niet via file://project/. Localhost kan je aan zetten met:
 - MAMP of XAMPP (als je dit al eerder had geïnstalleerd)
 - [OS X native localhost](https://coolestguidesontheplanet.com/get-apache-mysql-php-and-phpmyadmin-working-on-macos-sierra/)
-- [Python Simple HTTP Server](http://www.pythonforbeginners.com/modules-in-python/how-to-use-simplehttpserver/)
-- [Browsersync](https://www.browsersync.io)
+- [Windows native localhost](https://msdn.microsoft.com/en-us/library/ms181052(v=vs.80).aspx)
+
+Als je geen localhost op je machine hebt draaien kan je een tijdelijke server voor je project starten met:
+- [HTTP Server with Python](http://www.pythonforbeginners.com/modules-in-python/how-to-use-simplehttpserver/)
+- [HTTP Server with Node](https://www.npmjs.com/package/http-server)
+- [HTTP Server with automatic browser refresh](https://www.browsersync.io)
 
 ## Hello World
 
-### Downloaden en editen
+### 1 - Download het project
+- Maak een nieuwe projectmap voor week 0. (bv. projecten/prg4/week0)
+- Open een terminal (OS X) of CMD (Windows) venster en navigeer naar je projectmap.
 - Clone de Week 0 repository
 `git clone https://github.com/HR-CMGT/PRG04-Week0.git`
-- Open de DIST folder in een webbrowser via localhost: http://localhost/mijnprojecten/prg04-week0/dist/
+- Open de DIST folder in een webbrowser via localhost: http://localhost/projecten/prg4/week0/dist/
+
+### 2 - Wijzig het typescript bestand
 - Open Visual Studio Code
-- Ga naar **File > Open Folder**. Open de PRG04-Week0 folder die je net gecloned hebt. Zie screenshot!
-- Wijzig het bestand 'message.ts' en druk op CMD+SHIFT+B
+- Ga naar **File > Open Folder**. Open de week0 folder die je net gecloned hebt. Zie screenshot!
+- Verwijder de .js file uit de DIST folder.
+- Open 'message.ts' in de DEV folder, maak een wijziging, en druk op CMD+SHIFT+B
+- Kijk of het .js bestand opnieuw wordt gegenereerd.
 - Refresh de browser om te zien of je wijziging is doorgevoerd.
 
 ![img](http://i.imgur.com/5LEA1E1.png)
