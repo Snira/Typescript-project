@@ -25,7 +25,13 @@ Als je geen localhost op je machine hebt draaien kan je een tijdelijke server vo
 - [HTTP Server with Node](https://www.npmjs.com/package/http-server)
 - [HTTP Server with automatic browser refresh](https://www.browsersync.io)
 
-## Hello World
+## Test typescript compiler
+- Maak een nieuw javascript bestand met de naam `test.js`
+- In het bestand zet je de code `console.log('hello world')`
+- Open een terminal window in de map van het bestand.
+- Compileer javascript naar typescript met `tsc test.js`
+
+## Test Visual Studio Code
 
 ### 1 - Download het project
 - Maak een nieuwe projectmap voor week 0. (bv. projecten/prg4/week0)
