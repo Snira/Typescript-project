@@ -2,6 +2,15 @@
 
 In PRG04 gaan we werken met Typescript en github. Installeer alvast de benodigde tools en kijk of je "Hello World" kan maken.
 
+### Herhaling Javascript Basics
+Zorg dat je onderstaande javascript basics beheerst.
+- Scope
+- Loop
+- Array
+- Function
+- Function arguments
+- Function return value
+
 ### Typescript en Code Editor
 - [Installeer Node en NPM](https://nodejs.org/en/)
 - [Installeer Typescript](https://www.typescriptlang.org)
