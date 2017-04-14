@@ -11,6 +11,8 @@ Zorg dat je onderstaande javascript basics beheerst.
 - Function arguments
 - Function return value
 
+[MDN Javascript basics](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics)
+
 ### Typescript en Code Editor
 - [Installeer Node en NPM](https://nodejs.org/en/)
 - [Installeer Typescript](https://www.typescriptlang.org)
