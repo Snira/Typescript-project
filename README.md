@@ -72,7 +72,3 @@ Als je geen localhost op je machine hebt draaien kan je een tijdelijke server vo
 - [New features in ES6](http://es6-features.org)
 - [Javascript Support](https://en.wikipedia.org/wiki/ECMAScript)
 - [Browser support for Javascript, HTML and CSS](http://caniuse.com)
-
-
-
-## Test Visual Studio Code
