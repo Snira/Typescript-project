@@ -68,4 +68,11 @@ Als je geen localhost op je machine hebt draaien kan je een tijdelijke server vo
 - tasks.json bevat het 'build' commando. Dit voer je uit met CMD+SHIFT+B
 
 ## Links
-- [PRG04 op github](https://github.com/HR-CMGT)
+- [Typescript Documentation](https://www.typescriptlang.org)
+- [New features in ES6](http://es6-features.org)
+- [Javascript Support](https://en.wikipedia.org/wiki/ECMAScript)
+- [Browser support for Javascript, HTML and CSS](http://caniuse.com)
+
+
+
+## Test Visual Studio Code
