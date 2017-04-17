@@ -70,5 +70,6 @@ Als je geen localhost op je machine hebt draaien kan je een tijdelijke server vo
 ## Links
 - [Typescript Documentation](https://www.typescriptlang.org)
 - [New features in ES6](http://es6-features.org)
+- [2D Collision detection](https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection)
 - [Javascript Support](https://en.wikipedia.org/wiki/ECMAScript)
 - [Browser support for Javascript, HTML and CSS](http://caniuse.com)
