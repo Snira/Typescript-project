@@ -77,7 +77,7 @@ Als je geen localhost op je machine hebt draaien kan je een tijdelijke server vo
 
 ## Links
 - [Typescript Documentation](https://www.typescriptlang.org)
-- [Typescript Deep Dive](https://www.gitbook.com/book/basarat/typescript/details)
+- [Typescript Getting Started](https://basarat.gitbooks.io/typescript/content/docs/getting-started.html)
 - [New features in ES6](http://es6-features.org)
 - [MDN Javascript basics](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics)
 - [Javascript Timeline](https://en.wikipedia.org/wiki/ECMAScript)
