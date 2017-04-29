@@ -71,12 +71,16 @@ Als je geen localhost op je machine hebt draaien kan je een tijdelijke server vo
 - Doe `git clone` van je eigen fork naar je lokale machine 
 - In Visual Studio Code kan je in het GIT venster `commit` en `sync` doen om je code weer online te plaatsen
 
-### Lokaal
+### Offline
 - Clone deze repository rechtstreeks in je werkfolder met `git clone https://github.com/HR-CMGT/PRG04-Week0.git`, of download de ZIP file. 
-- Je kan de git folder daarna weg gooien omdat je niet meer terug kan pushen naar deze repository. Open de Visual Studio Code Terminal en typ: `rm -rf .git`
+- Je kan nu offline aan het project werken.
+- Je kan de (onzichtbare) git folder weg gooien: open de Visual Studio Code Terminal en typ: `rm -rf .git`
 
-### Github pages
-- Ga naar 'settings' in je eigen github repository. 
+### Publiceren naar Github Pages
+- Ga naar 'settings' in je eigen github repository. Onder 'GitHub Pages' kies je `master branch/docs folder`. Klik op 'save'.
+- Je docs folder is nu als webproject te bekijken via een github.io url : `https://hr-cmgt.github.io/PRG04-Week0/`
+
+![Pages](pages.png?raw=true "Pages")
 
 ## Links
 - [Typescript Documentation](https://www.typescriptlang.org)
