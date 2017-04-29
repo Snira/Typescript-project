@@ -4,12 +4,7 @@ In PRG04 gaan we werken met Typescript en github. Installeer alvast de benodigde
 
 ## Herhaling Javascript Basics
 Zorg dat je onderstaande javascript basics beheerst.
-- Scope
-- Loop
-- Array
-- Function
-- Function arguments
-- Function return value
+- Scope, Loop, Array, Function, Function arguments en return value
 
 [MDN Javascript basics](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics)
 
@@ -18,24 +13,16 @@ Zorg dat je onderstaande javascript basics beheerst.
 - [Installeer Typescript](https://www.typescriptlang.org)
 - [Download Visual Studio Code](https://code.visualstudio.com)
 
-
-
-## Localhost instellen
-Je test een project altijd via http://localhost/.../project, en niet via file://project/. Localhost kan je aan zetten met:
-- MAMP of XAMPP (als je dit al eerder had geïnstalleerd)
-- [OS X native localhost](https://coolestguidesontheplanet.com/get-apache-mysql-php-and-phpmyadmin-working-on-macos-sierra/)
-- [Windows native localhost](https://msdn.microsoft.com/en-us/library/ms181052(v=vs.80).aspx)
-
-Als je geen localhost op je machine hebt draaien kan je een tijdelijke server voor je project starten met:
-- [HTTP Server with Python](http://www.pythonforbeginners.com/modules-in-python/how-to-use-simplehttpserver/)
-- [HTTP Server with Node](https://www.npmjs.com/package/http-server)
-- [HTTP Server with automatic browser refresh](https://www.browsersync.io)
-
 ## Typescript compiler in terminal
 - Maak een nieuw javascript bestand met de naam `test.js`
 - In het bestand zet je de code `console.log('hello world')`
 - Open een terminal window in de map van het bestand.
 - Compileer javascript naar typescript met `tsc test.js`
+
+## Localhost instellen
+Je test een project altijd via http://localhost/.../project, en niet via file://project/. Als je MAMP of XAMPP al hebt geïntalleerd dan heb je al een localhost server. Het is mogelijk om de native localhost van je machine aan te zetten op [OS X](https://coolestguidesontheplanet.com/get-apache-mysql-php-and-phpmyadmin-working-on-macos-sierra/) en [Windows](https://msdn.microsoft.com/en-us/library/ms181052(v=vs.80).aspx). 
+
+Je kan ook een tijdelijke localhost server voor je project starten met [Python](http://www.pythonforbeginners.com/modules-in-python/how-to-use-simplehttpserver/), [Node](https://www.npmjs.com/package/http-server) of [BrowserSync](https://www.browsersync.io)
 
 ## Visual Studio Code
 
