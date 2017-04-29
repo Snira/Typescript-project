@@ -18,19 +18,7 @@ Zorg dat je onderstaande javascript basics beheerst.
 - [Installeer Typescript](https://www.typescriptlang.org)
 - [Download Visual Studio Code](https://code.visualstudio.com)
 
-## Werken met GitHub
-- [Installeer git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-- [Maak een github account](https://www.github.com)
-- [Git tutorial](https://try.github.io/)
 
-### Fork
-- Als je een fork van deze repository maakt heb je meteen je eigen code online staan. 
-- Doe `git clone` van je eigen fork naar je lokale machine 
-- In Visual Studio Code kan je in het GIT venster `commit` en `sync` doen om je code weer online te plaatsen
-
-### Lokaal
-- Clone deze repository rechtstreeks in je werkfolder, of download de ZIP file. 
-- Je kan de git folder daarna weg gooien omdat je niet meer terug kan pushen naar deze repository. Open de Visual Studio Code Terminal en typ: `rm -rf .git`
 
 ## Localhost instellen
 Je test een project altijd via http://localhost/.../project, en niet via file://project/. Localhost kan je aan zetten met:
@@ -58,22 +46,37 @@ Als je geen localhost op je machine hebt draaien kan je een tijdelijke server vo
 ### Openen in browser
 - Open de DIST folder in een browser via localhost: http://localhost/projecten/prg4/week0/dist/
 
-### VS Code compiler
-- Open Visual Studio Code
-- Ga naar **File > Open Folder**. Open de week0 folder die je net gecloned hebt. Zie screenshot!
-- Let op dat de root **Folder** in VS Code je projectmap is. Hierin staan al je config en build settings.
-- Verwijder de .js file uit de DIST folder.
-- Open 'message.ts' in de DEV folder, maak een wijziging, en druk op CMD+SHIFT+B (mac) of CTRL+SHIFT+B (win)
-- Kijk of het .js bestand opnieuw wordt gegenereerd.
-- Refresh de browser om te zien of je wijziging is doorgevoerd.
+### Visual Studio Code
+- Ga naar **File > Open Folder**. Open de week0 folder die je net gecloned hebt. 
+- Let op dat de root **Folder** in VS Code je projectmap is! 
+- Wijzig 'message.ts' en druk op CMD+SHIFT+B (mac) of CTRL+SHIFT+B (win) om typescript te compileren. 
+- De compiler heeft een 'watch' mode. Je wijzigingen worden nu automatisch gecompileerd nadat je opslaat.
+- Kijk of het .js bestand wordt gegenereerd en refresh de browser om te zien of je wijziging is doorgevoerd.
 
-![img](http://i.imgur.com/5LEA1E1.png)
+![Editor](editor.png?raw=true "Editor")
 
 ### Uitleg bestanden
-- De DIST folder bevat de website : html, css en javascript. De javascript files worden automatisch gegenereerd.
+- De DOCS folder bevat de website : html, css en javascript. De javascript files worden automatisch gegenereerd.
 - De DEV folder bevat de typescript files. Dit zijn de files waarin je gaat programmeren.
-- tsconfig.json bevat instellingen voor het compileren naar javascript.
-- tasks.json bevat het 'build' commando. Dit voer je uit met CMD+SHIFT+B
+- tsconfig.json bevat instellingen voor het compileren van typescript naar javascript.
+- tasks.json bevat het 'build' commando van Visual Studio Code. Dit voer je uit met CMD+SHIFT+B
+
+## Werken met GitHub
+- [Installeer git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+- [Maak een github account](https://www.github.com)
+- [Git tutorial](https://try.github.io/)
+
+### Fork
+- Als je een fork van deze repository maakt heb je meteen je eigen code online staan. 
+- Doe `git clone` van je eigen fork naar je lokale machine 
+- In Visual Studio Code kan je in het GIT venster `commit` en `sync` doen om je code weer online te plaatsen
+
+### Lokaal
+- Clone deze repository rechtstreeks in je werkfolder met `git clone https://github.com/HR-CMGT/PRG04-Week0.git`, of download de ZIP file. 
+- Je kan de git folder daarna weg gooien omdat je niet meer terug kan pushen naar deze repository. Open de Visual Studio Code Terminal en typ: `rm -rf .git`
+
+### Github pages
+- Ga naar 'settings' in je eigen github repository. 
 
 ## Links
 - [Typescript Documentation](https://www.typescriptlang.org)
