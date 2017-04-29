@@ -2,7 +2,8 @@
 
 class Main {
     constructor() {
-       let demomessage = new Message();
+       let mOne:Message = new Message("Hello");
+       let mTwo:Message = new Message("World");
     }
 } 
 
