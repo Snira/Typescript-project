@@ -3,10 +3,8 @@
 In PRG04 gaan we werken met Typescript en github. Installeer alvast de benodigde tools en kijk of je "Hello World" kan maken.
 
 ## Herhaling Javascript Basics
-Zorg dat je onderstaande javascript basics beheerst.
+Zorg dat je onderstaande [javascript basics](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics) beheerst.
 - Scope, Loop, Array, Function, Function arguments en return value
-
-[MDN Javascript basics](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics)
 
 ## Typescript en Code Editor
 - [Installeer Node en NPM](https://nodejs.org/en/)
@@ -27,15 +25,11 @@ Je kan ook een tijdelijke localhost server voor je project starten met [Python](
 ## Visual Studio Code
 
 ### Download project
-- Maak een projectmap voor PRG4. Maak daarin een map voor week 0 `projecten/prg4/week0/`
-- Download de ZIP van dit testproject (zie 'werken met github').
-
-### Openen in browser
-- Open de DIST folder in een browser via localhost: http://localhost/projecten/prg4/week0/dist/
+- Download dit testproject (zie 'werken met github').
+- Open de DOCS folder in een browser via localhost: http://localhost/projecten/prg4/week0/docs/
 
 ### Visual Studio Code
-- Ga naar **File > Open Folder**. Open de week0 folder die je net gecloned hebt. 
-- Let op dat de root **Folder** in VS Code je projectmap is! 
+- Ga naar **File > Open Folder**. Let op dat de root **Folder** in VS Code je projectmap is! 
 - Wijzig 'message.ts' en druk op CMD+SHIFT+B (mac) of CTRL+SHIFT+B (win) om typescript te compileren. 
 - De compiler heeft een 'watch' mode. Je wijzigingen worden nu automatisch gecompileerd nadat je opslaat.
 - Kijk of het .js bestand wordt gegenereerd en refresh de browser om te zien of je wijziging is doorgevoerd.
