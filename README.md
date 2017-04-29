@@ -70,7 +70,7 @@ Als je geen localhost op je machine hebt draaien kan je een tijdelijke server vo
 - Als je een fork van deze repository maakt heb je meteen je eigen code online staan. 
 - Doe `git clone https://github.com/jouw_account/PRG04-Week0.git` in je werk folder.
 - Open die folder in Visual Studio Code.
-- In Visual Studio Code kan `commit` en `sync` doen om je code weer online te plaatsen. Zie screenshot.
+- Als je code is gewijzigd kan je `commit` en daarna `sync` doen om je code online te plaatsen. Zie screenshot.
 
 ![Sync](sync.png?raw=true "Sync")
 
