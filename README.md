@@ -12,10 +12,10 @@ Zorg dat je onderstaande [javascript basics](https://developer.mozilla.org/en-US
 - [Download Visual Studio Code](https://code.visualstudio.com)
 
 ## Typescript compiler in terminal
-- Maak een nieuw javascript bestand met de naam `test.js`
-- In het bestand zet je de code `console.log('hello world')`
+- Maak een nieuw typescript bestand met de naam `test.ts`
+- In het bestand zet je de javascript code `console.log('hello world')`
 - Open een terminal window in de map van het bestand.
-- Compileer javascript naar typescript met `tsc test.js`
+- Compileer javascript naar typescript met `tsc test.ts`
 
 ## Localhost instellen
 Je test een project altijd via http://localhost/.../project, en niet via file://project/. Als je MAMP of XAMPP al hebt geïntalleerd dan heb je al een localhost server. Het is mogelijk om de native localhost van je machine aan te zetten op [OS X](https://coolestguidesontheplanet.com/get-apache-mysql-php-and-phpmyadmin-working-on-macos-sierra/) en [Windows](https://msdn.microsoft.com/en-us/library/ms181052(v=vs.80).aspx). 
