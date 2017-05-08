@@ -72,3 +72,4 @@ Je kan ook een tijdelijke localhost server voor je project starten met [Python](
 - [MDN Javascript basics](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics)
 - [Javascript Timeline](https://en.wikipedia.org/wiki/ECMAScript)
 - [Browser support for new features](http://caniuse.com)
+- [Typescript Code Conventions](https://github.com/basarat/typescript-book/blob/master/docs/styleguide/styleguide.md)
