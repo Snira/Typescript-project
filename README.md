@@ -12,17 +12,10 @@ Zorg dat je onderstaande [javascript basics](https://developer.mozilla.org/en-US
 - [Download Visual Studio Code](https://code.visualstudio.com)
 
 ## Typescript compiler in terminal
-<<<<<<< HEAD
 - Maak een nieuw javascript bestand met de naam `test.ts`
 - In het bestand zet je de code `console.log('hello world')`
 - Open een terminal window in de map van het bestand.
 - Compileer typescript naar javascript met `tsc test.ts`
-=======
-- Maak een nieuw typescript bestand met de naam `test.ts`
-- In het bestand zet je de javascript code `console.log('hello world')`
-- Open een terminal window in de map van het bestand.
-- Compileer javascript naar typescript met `tsc test.ts`
->>>>>>> 48855274a0a8ded1f6be8cd90da79a8310a4f327
 
 ## Localhost instellen
 Je test een project altijd via http://localhost/.../project, en niet via file://project/. 
@@ -41,7 +34,7 @@ Je test een project altijd via http://localhost/.../project, en niet via file://
 - Ga naar **File > Open Folder**. Let op dat de root **Folder** in VS Code je projectmap is! 
 - Wijzig 'message.ts' en druk op CMD+SHIFT+B (mac) of CTRL+SHIFT+B (win) om typescript te compileren. 
 - De compiler heeft een 'watch' mode. Je wijzigingen worden nu automatisch gecompileerd nadat je opslaat.
-- Kijk of het .js bestand wordt gegenereerd en refresh de browser om te zien of je wijziging is doorgevoerd.
+- Kijk of het .js bestand wordt gegenereerd en refresh de browser om te zien of je wij  ziging is doorgevoerd.
 
 ![Editor](editor.png?raw=true "Editor")
 
