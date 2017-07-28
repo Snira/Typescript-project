@@ -12,15 +12,17 @@ Zorg dat je onderstaande [javascript basics](https://developer.mozilla.org/en-US
 - [Download Visual Studio Code](https://code.visualstudio.com)
 
 ## Typescript compiler in terminal
-- Maak een nieuw javascript bestand met de naam `test.js`
+- Maak een nieuw javascript bestand met de naam `test.ts`
 - In het bestand zet je de code `console.log('hello world')`
 - Open een terminal window in de map van het bestand.
-- Compileer javascript naar typescript met `tsc test.js`
+- Compileer typescript naar javascript met `tsc test.ts`
 
 ## Localhost instellen
-Je test een project altijd via http://localhost/.../project, en niet via file://project/. Als je MAMP of XAMPP al hebt geïntalleerd dan heb je al een localhost server. Het is mogelijk om de native localhost van je machine aan te zetten op [OS X](https://coolestguidesontheplanet.com/get-apache-mysql-php-and-phpmyadmin-working-on-macos-sierra/) en [Windows](https://msdn.microsoft.com/en-us/library/ms181052(v=vs.80).aspx). 
+Je test een project altijd via http://localhost/.../project, en niet via file://project/. 
 
-Je kan ook een tijdelijke localhost server voor je project starten met [Python](http://www.pythonforbeginners.com/modules-in-python/how-to-use-simplehttpserver/), [Node](https://www.npmjs.com/package/http-server) of [BrowserSync](https://www.browsersync.io)
+- Als je MAMP of XAMPP al hebt geïntalleerd dan heb je al een localhost server. Plaats je projecten in wwwroot.
+- Het is mogelijk om de native localhost van je machine aan te zetten op [OS X](https://coolestguidesontheplanet.com/get-apache-mysql-php-and-phpmyadmin-working-on-macos-sierra/) en [Windows](https://msdn.microsoft.com/en-us/library/ms181052(v=vs.80).aspx). 
+- Je kan ook een tijdelijke localhost server voor je project starten met [Python](http://www.pythonforbeginners.com/modules-in-python/how-to-use-simplehttpserver/), [Node](https://www.npmjs.com/package/live-server) of [BrowserSync](https://www.browsersync.io)
 
 ## Visual Studio Code
 
@@ -40,7 +42,6 @@ Je kan ook een tijdelijke localhost server voor je project starten met [Python](
 - De DOCS folder bevat de website : html, css en javascript. De javascript files worden automatisch gegenereerd.
 - De DEV folder bevat de typescript files. Dit zijn de files waarin je gaat programmeren.
 - tsconfig.json bevat instellingen voor het compileren van typescript naar javascript.
-- tasks.json bevat het 'build' commando van Visual Studio Code. Dit voer je uit met CMD+SHIFT+B
 
 ## Werken met GitHub
 - [Installeer git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
