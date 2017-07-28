@@ -12,10 +12,17 @@ Zorg dat je onderstaande [javascript basics](https://developer.mozilla.org/en-US
 - [Download Visual Studio Code](https://code.visualstudio.com)
 
 ## Typescript compiler in terminal
+<<<<<<< HEAD
 - Maak een nieuw javascript bestand met de naam `test.ts`
 - In het bestand zet je de code `console.log('hello world')`
 - Open een terminal window in de map van het bestand.
 - Compileer typescript naar javascript met `tsc test.ts`
+=======
+- Maak een nieuw typescript bestand met de naam `test.ts`
+- In het bestand zet je de javascript code `console.log('hello world')`
+- Open een terminal window in de map van het bestand.
+- Compileer javascript naar typescript met `tsc test.ts`
+>>>>>>> 48855274a0a8ded1f6be8cd90da79a8310a4f327
 
 ## Localhost instellen
 Je test een project altijd via http://localhost/.../project, en niet via file://project/. 
@@ -73,3 +80,4 @@ Je test een project altijd via http://localhost/.../project, en niet via file://
 - [MDN Javascript basics](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics)
 - [Javascript Timeline](https://en.wikipedia.org/wiki/ECMAScript)
 - [Browser support for new features](http://caniuse.com)
+- [Typescript Code Conventions](https://github.com/basarat/typescript-book/blob/master/docs/styleguide/styleguide.md)
