@@ -1,19 +1,16 @@
-var Message = (function () {
-    function Message(str) {
-        var div = document.createElement("message");
-        document.body.appendChild(div);
-        div.innerHTML = str;
+"use strict";
+var Car = (function () {
+    function Car() {
+        console.log("vroom!");
     }
-    return Message;
+    return Car;
 }());
-var Main = (function () {
-    function Main() {
-        var mOne = new Message("Hello");
-        var mTwo = new Message("World");
+var Game = (function () {
+    function Game() {
+        console.log("new game created!");
+        var c = new Car();
     }
-    return Main;
+    return Game;
 }());
-window.addEventListener("load", function () {
-    new Main();
-});
+window.addEventListener("load", function () { return new Game(); });
 //# sourceMappingURL=main.js.map
