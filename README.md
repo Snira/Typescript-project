@@ -1,6 +1,6 @@
 # Typescript startproject
 
-Dit is een leeg startproject voor de oefeningen in CMTTHE01-4 en PRG01-8. Het project bevat ook een voorbeeld van het inleverdocument van de praktijkopdrachten.
+Dit is een leeg startproject voor de oefeningen in CMTTHE01-4 en PRG01-8. 
 
 ## Het project
 
@@ -14,9 +14,3 @@ Dit is een leeg startproject voor de oefeningen in CMTTHE01-4 en PRG01-8. Het pr
 
 ## Bekijken
 Open index.html in `localhost`
-
-## Inleverdocument praktijkopdracht
-Dit project bevat een template voor het inleverdocument van de praktijkopdrachten
-
-- [Inleverdocument CMTTHE01-4](inleverdocument_cmt4.md)
-- [Inleverdocument PRG01-8](inleverdocument_prg8.md)
