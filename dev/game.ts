@@ -3,6 +3,7 @@ class Game {
         console.log("new game created!")
 
         let c = new Car()
+        c.update()
     }
 }
 
