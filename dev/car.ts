@@ -1,5 +1,8 @@
 class Car {
     constructor() {
-        console.log("vroom!")
+        console.log("car created")
+    }
+    update() {
+        console.log("vrooom!")
     }
 }
