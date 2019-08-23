@@ -1,4 +1,5 @@
 body, html {
+    background-color: gray;
     margin:0; padding:0;
     width:100%; height:100%;
 }
@@ -8,5 +9,8 @@ body, html {
 }
 
 car {
-    display:block;
+    display: block;
+    position:absolute;
+    width:100px; height:100px;
+    background-image:url('../images/sprite6_0.png')
    } 

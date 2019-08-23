@@ -2,7 +2,8 @@ class Game {
     private static instance: Game;
 
     private constructor(){
-        let car = new Car();
+        let car = new Car()
+
         this.gameLoop(car)
     }
 

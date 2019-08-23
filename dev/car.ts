@@ -10,21 +10,21 @@ class Car implements GameObject {
 
         // let rectangle : ClientRect = this.element.getBoundingClientRect() 
         this.element = document.createElement('car')
-        this.element.innerHTML = 'Dit is een test'
+
         document.body.appendChild(this.element)
         this.behaviour = new Driving(this)
     }
 
     public update(){
-        this.behaviour.update();
-        console.log('moving', this.positionX)
-        this.positionX ++
-        this.element.style.transform = `translateX(${this.positionX}px)`
+        this.updatePosition()
     }
 
-    public stop(){
-        this.behaviour = new Idle(this)
-    } 
+    private updatePosition() {
+        this.positionX += this.behaviour.speed
+        this.behaviour.update();
+        
+        this.element.style.transform = `translateX(${this.positionX}px)`
+    }
 }
 
 // window.customElements.define("car-component", Car)

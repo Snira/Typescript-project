@@ -1,28 +1,19 @@
 "use strict";
-var Canvas = (function () {
-    function Canvas() {
-        this.canvas = document.getElementById('canvas');
-        this.context = this.canvas.getContext("2d");
-    }
-    return Canvas;
-}());
 var Car = (function () {
     function Car() {
         this.positionX = 0;
         this.positiionY = 0;
         this.element = document.createElement('car');
-        this.element.innerHTML = 'Dit is een test';
         document.body.appendChild(this.element);
         this.behaviour = new Driving(this);
     }
     Car.prototype.update = function () {
-        this.behaviour.update();
-        console.log('moving', this.positionX);
-        this.positionX++;
-        this.element.style.transform = "translateX(" + this.positionX + "px)";
+        this.updatePosition();
     };
-    Car.prototype.stop = function () {
-        this.behaviour = new Idle(this);
+    Car.prototype.updatePosition = function () {
+        this.positionX += this.behaviour.speed;
+        this.behaviour.update();
+        this.element.style.transform = "translateX(" + this.positionX + "px)";
     };
     return Car;
 }());
@@ -61,12 +52,16 @@ var Braking = (function () {
 }());
 var Driving = (function () {
     function Driving(c) {
-        this.speed = 100;
+        this.speed = 5;
         this.car = c;
     }
     Driving.prototype.update = function () {
-        this.car.positionX++;
-        console.log('driving', this.speed);
+        if (this.car.positionX >= window.innerWidth) {
+            this.speed *= -1;
+        }
+        if (this.car.positionX <= 0) {
+            this.speed *= -1;
+        }
     };
     return Driving;
 }());

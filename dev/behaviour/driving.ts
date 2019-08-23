@@ -1,5 +1,5 @@
 class Driving implements Behaviour {
-    speed:number = 100;
+    speed:number = 5;
     car:Car;
 
     constructor(c:Car){
@@ -7,7 +7,11 @@ class Driving implements Behaviour {
     }
 
     public update() {
-        this.car.positionX++
-        console.log('driving', this.speed)
+        if(this.car.positionX >= window.innerWidth){
+            this.speed *= -1
+        }
+        if(this.car.positionX <= 0){
+            this.speed *= -1
+        }
     }
    }
