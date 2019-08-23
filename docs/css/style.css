@@ -11,6 +11,9 @@ body, html {
 car {
     display: block;
     position:absolute;
-    width:100px; height:100px;
-    background-image:url('../images/sprite6_0.png')
+    height:160px;
+    width: 300px;
+    transform: scale(0.2);
+    background-repeat: none;
+    background-image:url('../images/sprite6_0.png');
    } 

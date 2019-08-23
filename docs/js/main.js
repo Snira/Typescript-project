@@ -1,11 +1,14 @@
 "use strict";
 var Car = (function () {
     function Car() {
+        var _this = this;
         this.positionX = 0;
         this.positiionY = 0;
+        this.scale = 0.5;
         this.element = document.createElement('car');
         document.body.appendChild(this.element);
         this.behaviour = new Driving(this);
+        window.addEventListener("keydown", function (e) { return _this.keydown(e); });
     }
     Car.prototype.update = function () {
         this.updatePosition();
@@ -13,7 +16,17 @@ var Car = (function () {
     Car.prototype.updatePosition = function () {
         this.positionX += this.behaviour.speed;
         this.behaviour.update();
-        this.element.style.transform = "translateX(" + this.positionX + "px)";
+        this.element.style.transform = "translateX(" + this.positionX + "px) scale(" + this.scale + ")";
+    };
+    Car.prototype.keydown = function (event) {
+        switch (event.key) {
+            case 'ArrowDown':
+                this.behaviour = new Braking(this);
+                break;
+            case 'ArrowUp':
+                this.behaviour = new Driving(this);
+                break;
+        }
     };
     return Car;
 }());
@@ -28,7 +41,6 @@ var Game = (function () {
         requestAnimationFrame(function () { return _this.gameLoop(car); });
     };
     Game.getInstance = function () {
-        console.log('init');
         return this.instance || (this.instance = new Game());
     };
     return Game;
@@ -38,12 +50,11 @@ window.addEventListener("load", function () {
 });
 var Braking = (function () {
     function Braking(c) {
-        this.speed = 0;
+        this.speed = 5;
         this.car = c;
     }
     Braking.prototype.update = function () {
-        this.speed--;
-        console.log('braking', this.speed);
+        this.speed -= 0.2;
         if (this.speed < 0) {
             this.car.behaviour = new Idle(this.car);
         }

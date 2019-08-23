@@ -15,7 +15,6 @@ class Game {
 
     public static getInstance(): Game
     {
-        console.log('init')
         return this.instance || (this.instance = new Game())
     }
 }
