@@ -6,4 +6,6 @@ interface GameObject {
     color?: string;
     width?: number;
     height?: number;
+
+    update():void
 }

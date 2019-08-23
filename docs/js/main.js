@@ -1,10 +1,10 @@
 "use strict";
 var Car = (function () {
-    function Car() {
+    function Car(x, y, scale) {
         var _this = this;
-        this.positionX = 0;
-        this.positiionY = 0;
-        this.scale = 0.5;
+        this.positionX = x;
+        this.positiionY = y;
+        this.scale = scale;
         this.element = document.createElement('car');
         document.body.appendChild(this.element);
         this.behaviour = new Driving(this);
@@ -32,13 +32,17 @@ var Car = (function () {
 }());
 var Game = (function () {
     function Game() {
-        var car = new Car();
-        this.gameLoop(car);
+        this.objects = [];
+        this.objects.push(new Car(0, 0, 0.5), new Car(100, 100, 0.5));
+        this.gameLoop();
     }
-    Game.prototype.gameLoop = function (car) {
+    Game.prototype.gameLoop = function () {
         var _this = this;
-        car.update();
-        requestAnimationFrame(function () { return _this.gameLoop(car); });
+        for (var _i = 0, _a = this.objects; _i < _a.length; _i++) {
+            var o = _a[_i];
+            o.update();
+        }
+        requestAnimationFrame(function () { return _this.gameLoop(); });
     };
     Game.getInstance = function () {
         return this.instance || (this.instance = new Game());
@@ -82,7 +86,7 @@ var Idle = (function () {
         this.car = c;
     }
     Idle.prototype.update = function () {
-        console.log('car is now idle', this.speed);
+        console.log('car is now idle');
     };
     return Idle;
 }());

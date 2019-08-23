@@ -5,10 +5,10 @@ class Car implements GameObject {
     scale: number;
     behaviour: Behaviour;
 
-    constructor() {
-        this.positionX = 0;
-        this.positiionY = 0;
-        this.scale = 0.5;
+    constructor(x:number, y:number, scale:number) {
+        this.positionX = x
+        this.positiionY = y
+        this.scale = scale
 
         // let rectangle : ClientRect = this.element.getBoundingClientRect() 
         this.element = document.createElement('car')
@@ -24,7 +24,7 @@ class Car implements GameObject {
 
     private updatePosition() {
         this.positionX += this.behaviour.speed
-        this.behaviour.update();
+        this.behaviour.update()
         
         this.element.style.transform = `translateX(${this.positionX}px) scale(${this.scale})`
     }

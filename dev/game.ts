@@ -1,16 +1,20 @@
 class Game {
-    private static instance: Game;
+    private static instance: Game
+
+    objects:GameObject[] = []
 
     private constructor(){
-        let car = new Car()
-
-        this.gameLoop(car)
+        this.objects.push(new Car(0,0,0.5), new Car(100,100,0.5))
+        this.gameLoop()
     }
 
-    private gameLoop(car:Car): void
+    private gameLoop(): void
     {
-        car.update()
-        requestAnimationFrame(() => this.gameLoop(car))
+        for(let o of this.objects){
+            o.update()
+        } 
+
+        requestAnimationFrame(() => this.gameLoop())
     }
 
     public static getInstance(): Game
