@@ -4,7 +4,7 @@ class Game {
     objects:GameObject[] = []
 
     private constructor(){
-        this.objects.push(new Car(0,0,0.5), new Car(100,100,0.5))
+        this.objects.push(new Car(0,0,0.5), new Car(200,200,0.5))
         this.gameLoop()
     }
 

@@ -1,13 +1,13 @@
 class Car implements GameObject {
     element: HTMLElement;
     positionX: number;
-    positiionY: number;
+    positionY: number;
     scale: number;
     behaviour: Behaviour;
 
     constructor(x:number, y:number, scale:number) {
         this.positionX = x
-        this.positiionY = y
+        this.positionY = y
         this.scale = scale
 
         // let rectangle : ClientRect = this.element.getBoundingClientRect() 
@@ -26,7 +26,7 @@ class Car implements GameObject {
         this.positionX += this.behaviour.speed
         this.behaviour.update()
         
-        this.element.style.transform = `translateX(${this.positionX}px) scale(${this.scale})`
+        this.element.style.transform = `translateX(${this.positionX}px) translateY(${this.positionY}px) scale(${this.scale})`
     }
 
     private keydown(event:KeyboardEvent)

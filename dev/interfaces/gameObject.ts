@@ -1,7 +1,7 @@
 interface GameObject {
     element: HTMLElement;
     positionX: number;
-    positiionY: number;
+    positionY: number;
     scale: number;
     color?: string;
     width?: number;

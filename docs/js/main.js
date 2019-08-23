@@ -3,7 +3,7 @@ var Car = (function () {
     function Car(x, y, scale) {
         var _this = this;
         this.positionX = x;
-        this.positiionY = y;
+        this.positionY = y;
         this.scale = scale;
         this.element = document.createElement('car');
         document.body.appendChild(this.element);
@@ -16,7 +16,7 @@ var Car = (function () {
     Car.prototype.updatePosition = function () {
         this.positionX += this.behaviour.speed;
         this.behaviour.update();
-        this.element.style.transform = "translateX(" + this.positionX + "px) scale(" + this.scale + ")";
+        this.element.style.transform = "translateX(" + this.positionX + "px) translateY(" + this.positionY + "px) scale(" + this.scale + ")";
     };
     Car.prototype.keydown = function (event) {
         switch (event.key) {
@@ -33,7 +33,7 @@ var Car = (function () {
 var Game = (function () {
     function Game() {
         this.objects = [];
-        this.objects.push(new Car(0, 0, 0.5), new Car(100, 100, 0.5));
+        this.objects.push(new Car(0, 0, 0.5), new Car(200, 200, 0.5));
         this.gameLoop();
     }
     Game.prototype.gameLoop = function () {
