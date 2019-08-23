@@ -1,10 +1,25 @@
 class Game {
-    constructor(){
-        console.log("new game created!")
+    private static instance: Game;
 
-        let c = new Car()
-        c.update()
+    private constructor(){
+        let car = new Car();
+        this.gameLoop(car)
+    }
+
+    private gameLoop(car:Car): void
+    {
+        car.update()
+        requestAnimationFrame(() => this.gameLoop(car))
+    }
+
+    public static getInstance(): Game
+    {
+        console.log('init')
+        return this.instance || (this.instance = new Game())
     }
 }
 
-window.addEventListener("load", () => new Game())
+window.addEventListener("load", () => {
+    Game.getInstance()
+})
+
