@@ -17,6 +17,7 @@ class GameObject extends HTMLElement {
 
     public update():void {
         this.direction = (this.xspeed < 0) ? 1 : -1;
+        this.x *= this.speedmultiplier
         this.style.transform = "translate("+this.x+"px, "+this.y+"px) scale("+this.direction+",1)"
     }
 

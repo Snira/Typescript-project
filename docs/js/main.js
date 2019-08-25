@@ -12,6 +12,7 @@ class GameObject extends HTMLElement {
     }
     update() {
         this.direction = (this.xspeed < 0) ? 1 : -1;
+        this.x *= this.speedmultiplier;
         this.style.transform = "translate(" + this.x + "px, " + this.y + "px) scale(" + this.direction + ",1)";
     }
 }
@@ -45,19 +46,23 @@ window.customElements.define("car-component", Car);
 class Game {
     constructor() {
         this.gameOver = false;
-        this.gameObjects = [];
-        this.gameObjects.push(new Car(), new Car());
+        this.view = new StartView(this);
         this.gameLoop();
     }
     gameLoop() {
-        for (let go of this.gameObjects) {
-            go.update();
-            if (Util.checkCollision(this.gameObjects[0], this.gameObjects[1])) {
-                go.remove();
-            }
-        }
+        this.view.update();
         if (!this.gameOver) {
             requestAnimationFrame(() => this.gameLoop());
+        }
+    }
+    showPlayView(e) {
+        if (e.key == 'ArrowUp') {
+            this.setView();
+        }
+    }
+    setView() {
+        if (this.view instanceof StartView) {
+            this.view = new PlayView();
         }
     }
     static getInstance() {
@@ -93,7 +98,6 @@ class Driving {
         this.car = c;
     }
     update() {
-        console.log(this.car.x);
         if (this.car.x >= window.innerWidth) {
             this.speedx *= -1;
         }
@@ -109,6 +113,39 @@ class Idle {
     }
     update() {
         console.log('car is now idle');
+    }
+}
+class View {
+}
+class GameOverView extends View {
+    constructor() {
+        super();
+    }
+    update() {
+    }
+}
+class PlayView extends View {
+    constructor() {
+        super();
+        this.gameObjects = [];
+        Game.getInstance();
+        this.gameObjects.push(new Car(), new Car());
+    }
+    update() {
+        for (let go of this.gameObjects) {
+            go.update();
+            if (Util.checkCollision(this.gameObjects[0], this.gameObjects[1])) {
+                go.remove();
+            }
+        }
+    }
+}
+class StartView extends View {
+    constructor(game) {
+        super();
+        window.addEventListener("keydown", (e) => game.showPlayView(e));
+    }
+    update() {
     }
 }
 //# sourceMappingURL=main.js.map
