@@ -1,5 +1,5 @@
 class Idle implements Behaviour {
-    speed: number = 0;
+    speedx: number = 0;
     car:Car;
 
     constructor(c:Car){

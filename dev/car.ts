@@ -1,32 +1,25 @@
-class Car implements GameObject {
-    element: HTMLElement;
-    positionX: number;
-    positionY: number;
-    scale: number;
+/// <reference path="gameobject.ts" />
+
+class Car extends GameObject {
     behaviour: Behaviour;
+    
+    constructor() {
+        super()
 
-    constructor(x:number, y:number, scale:number) {
-        this.positionX = x
-        this.positionY = y
-        this.scale = scale
+        this.width = 67
+        this.height = 119
+        this.x = Math.random() * (window.innerWidth - 67)
+        this.y = Math.random() * (window.innerHeight/2) + (window.innerHeight/2-67)
 
-        // let rectangle : ClientRect = this.element.getBoundingClientRect() 
-        this.element = document.createElement('car')
-
-        document.body.appendChild(this.element)
         this.behaviour = new Driving(this)
         window.addEventListener("keydown", (e:KeyboardEvent) => this.keydown(e))
     }
 
     public update(){
-        this.updatePosition()
-    }
-
-    private updatePosition() {
-        this.positionX += this.behaviour.speed
         this.behaviour.update()
-        
-        this.element.style.transform = `translateX(${this.positionX}px) translateY(${this.positionY}px) scale(${this.scale})`
+        this.x += this.behaviour.speedx
+
+        super.update()
     }
 
     private keydown(event:KeyboardEvent)
@@ -41,3 +34,5 @@ class Car implements GameObject {
         }
     }
 }
+
+window.customElements.define("car-component", Car)

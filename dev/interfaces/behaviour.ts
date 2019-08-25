@@ -1,5 +1,5 @@
 interface Behaviour {
-    speed:number;
+    speedx:number;
 
     update():void
    } 

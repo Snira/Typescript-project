@@ -1,5 +1,5 @@
 class Braking implements Behaviour{
-    speed: number = 5;
+    speedx: number = 5;
     car:Car;
 
     constructor(c:Car){
@@ -7,8 +7,8 @@ class Braking implements Behaviour{
     }
 
     public update() {
-        this.speed -= 0.2
-        if(this.speed < 0){
+        this.speedx -= 0.2
+        if(this.speedx < 0){
             this.car.behaviour = new Idle(this.car)
         } 
     }

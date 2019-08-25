@@ -1,16 +1,16 @@
 class Game {
     private static instance: Game
 
-    objects:GameObject[] = []
+    gameObjects:GameObject[] = []
 
     private constructor(){
-        this.objects.push(new Car(0,0,0.5), new Car(200,200,0.5))
+        this.gameObjects.push(new Car(), new Car())
         this.gameLoop()
     }
 
     private gameLoop(): void
     {
-        for(let o of this.objects){
+        for(let o of this.gameObjects){
             o.update()
         } 
 

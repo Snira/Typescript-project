@@ -1,24 +1,36 @@
 "use strict";
-var Car = (function () {
-    function Car(x, y, scale) {
-        var _this = this;
-        this.positionX = x;
-        this.positionY = y;
-        this.scale = scale;
-        this.element = document.createElement('car');
-        document.body.appendChild(this.element);
-        this.behaviour = new Driving(this);
-        window.addEventListener("keydown", function (e) { return _this.keydown(e); });
+class GameObject extends HTMLElement {
+    constructor() {
+        super();
+        this.x = 0;
+        this.y = 0;
+        this.xspeed = 0;
+        this.yspeed = 0;
+        this.speedmultiplier = 1;
+        this.direction = 1;
+        document.body.appendChild(this);
     }
-    Car.prototype.update = function () {
-        this.updatePosition();
-    };
-    Car.prototype.updatePosition = function () {
-        this.positionX += this.behaviour.speed;
+    update() {
+        this.direction = (this.xspeed < 0) ? 1 : -1;
+        this.style.transform = "translate(" + this.x + "px, " + this.y + "px) scale(" + this.direction + ",1)";
+    }
+}
+class Car extends GameObject {
+    constructor() {
+        super();
+        this.width = 67;
+        this.height = 119;
+        this.x = Math.random() * (window.innerWidth - 67);
+        this.y = Math.random() * (window.innerHeight / 2) + (window.innerHeight / 2 - 67);
+        this.behaviour = new Driving(this);
+        window.addEventListener("keydown", (e) => this.keydown(e));
+    }
+    update() {
         this.behaviour.update();
-        this.element.style.transform = "translateX(" + this.positionX + "px) translateY(" + this.positionY + "px) scale(" + this.scale + ")";
-    };
-    Car.prototype.keydown = function (event) {
+        this.x += this.behaviour.speedx;
+        super.update();
+    }
+    keydown(event) {
         switch (event.key) {
             case 'ArrowDown':
                 this.behaviour = new Braking(this);
@@ -27,67 +39,69 @@ var Car = (function () {
                 this.behaviour = new Driving(this);
                 break;
         }
-    };
-    return Car;
-}());
-var Game = (function () {
-    function Game() {
-        this.objects = [];
-        this.objects.push(new Car(0, 0, 0.5), new Car(200, 200, 0.5));
+    }
+}
+window.customElements.define("car-component", Car);
+class Game {
+    constructor() {
+        this.gameObjects = [];
+        this.gameObjects.push(new Car(), new Car());
         this.gameLoop();
     }
-    Game.prototype.gameLoop = function () {
-        var _this = this;
-        for (var _i = 0, _a = this.objects; _i < _a.length; _i++) {
-            var o = _a[_i];
+    gameLoop() {
+        for (let o of this.gameObjects) {
             o.update();
         }
-        requestAnimationFrame(function () { return _this.gameLoop(); });
-    };
-    Game.getInstance = function () {
+        requestAnimationFrame(() => this.gameLoop());
+    }
+    static getInstance() {
         return this.instance || (this.instance = new Game());
-    };
-    return Game;
-}());
-window.addEventListener("load", function () {
+    }
+}
+window.addEventListener("load", () => {
     Game.getInstance();
 });
-var Braking = (function () {
-    function Braking(c) {
-        this.speed = 5;
+class Util {
+    static checkCollision(go1, go2) {
+        return (go1.x < go2.x + go2.width &&
+            go1.x + go1.width > go2.x &&
+            go1.y < go2.y + go2.height &&
+            go1.height + go1.y > go2.y);
+    }
+}
+class Braking {
+    constructor(c) {
+        this.speedx = 5;
         this.car = c;
     }
-    Braking.prototype.update = function () {
-        this.speed -= 0.2;
-        if (this.speed < 0) {
+    update() {
+        this.speedx -= 0.2;
+        if (this.speedx < 0) {
             this.car.behaviour = new Idle(this.car);
         }
-    };
-    return Braking;
-}());
-var Driving = (function () {
-    function Driving(c) {
-        this.speed = 5;
+    }
+}
+class Driving {
+    constructor(c) {
+        this.speedx = 5;
         this.car = c;
     }
-    Driving.prototype.update = function () {
-        if (this.car.positionX >= window.innerWidth) {
-            this.speed *= -1;
+    update() {
+        if (this.car.x >= window.innerWidth) {
+            this.speedx *= -1;
         }
-        if (this.car.positionX <= 0) {
-            this.speed *= -1;
+        if (this.car.y <= 0) {
+            this.speedx *= -1;
         }
-    };
-    return Driving;
-}());
-var Idle = (function () {
-    function Idle(c) {
-        this.speed = 0;
+    }
+}
+class Idle {
+    constructor(c) {
+        this.speedx = 0;
         this.car = c;
     }
-    Idle.prototype.update = function () {
+    update() {
         console.log('car is now idle');
-    };
-    return Idle;
-}());
+    }
+}
 //# sourceMappingURL=main.js.map
