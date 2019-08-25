@@ -6,8 +6,8 @@ class Car extends GameObject {
     constructor() {
         super()
 
-        this.width = 67
-        this.height = 119
+        this.width = 300
+        this.height = 160
         this.x = Math.random() * (window.innerWidth - 67)
         this.y = Math.random() * (window.innerHeight/2) + (window.innerHeight/2-67)
 

@@ -6,11 +6,12 @@ class Driving implements Behaviour {
         this.car = c
     }
 
-    public update() {
+    public update():void {
+        console.log(this.car.x)
         if(this.car.x >= window.innerWidth){
             this.speedx *= -1
         }
-        if(this.car.y <= 0){
+        if(this.car.x <= 0){
             this.speedx *= -1
         }
     }

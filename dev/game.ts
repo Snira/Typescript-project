@@ -1,6 +1,6 @@
 class Game {
     private static instance: Game
-
+    gameOver:boolean = false;
     gameObjects:GameObject[] = []
 
     private constructor(){
@@ -10,11 +10,17 @@ class Game {
 
     private gameLoop(): void
     {
-        for(let o of this.gameObjects){
-            o.update()
-        } 
+        for (let go of this.gameObjects){
+            go.update()
+            
+            if(Util.checkCollision(this.gameObjects[0], this.gameObjects[1])){
+                go.remove()
+            }
+        }
 
-        requestAnimationFrame(() => this.gameLoop())
+        if (!this.gameOver) {
+            requestAnimationFrame(() => this.gameLoop())
+        }
     }
 
     public static getInstance(): Game

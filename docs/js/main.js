@@ -18,8 +18,8 @@ class GameObject extends HTMLElement {
 class Car extends GameObject {
     constructor() {
         super();
-        this.width = 67;
-        this.height = 119;
+        this.width = 300;
+        this.height = 160;
         this.x = Math.random() * (window.innerWidth - 67);
         this.y = Math.random() * (window.innerHeight / 2) + (window.innerHeight / 2 - 67);
         this.behaviour = new Driving(this);
@@ -44,15 +44,21 @@ class Car extends GameObject {
 window.customElements.define("car-component", Car);
 class Game {
     constructor() {
+        this.gameOver = false;
         this.gameObjects = [];
         this.gameObjects.push(new Car(), new Car());
         this.gameLoop();
     }
     gameLoop() {
-        for (let o of this.gameObjects) {
-            o.update();
+        for (let go of this.gameObjects) {
+            go.update();
+            if (Util.checkCollision(this.gameObjects[0], this.gameObjects[1])) {
+                go.remove();
+            }
         }
-        requestAnimationFrame(() => this.gameLoop());
+        if (!this.gameOver) {
+            requestAnimationFrame(() => this.gameLoop());
+        }
     }
     static getInstance() {
         return this.instance || (this.instance = new Game());
@@ -87,10 +93,11 @@ class Driving {
         this.car = c;
     }
     update() {
+        console.log(this.car.x);
         if (this.car.x >= window.innerWidth) {
             this.speedx *= -1;
         }
-        if (this.car.y <= 0) {
+        if (this.car.x <= 0) {
             this.speedx *= -1;
         }
     }

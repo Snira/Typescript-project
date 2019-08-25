@@ -6,7 +6,7 @@ class Idle implements Behaviour {
         this.car = c
     }
 
-    public update() {
+    public update():void {
         console.log('car is now idle')
     }
    }
