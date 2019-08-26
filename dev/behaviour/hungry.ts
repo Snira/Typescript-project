@@ -4,7 +4,10 @@ class Hungry implements Behaviour {
     gandalf:Gandalf
 
     constructor(g:Gandalf){
-        this.gandalf = g 
+        this.gandalf = g
+        this.gandalf.style.backgroundImage = "url(images/"+this.gandalf.tag+"_hungry.png)";
+        this.gandalf.style.cursor =  "auto";
+        this.gandalf.setTarget();
     }
 
     public update():void {

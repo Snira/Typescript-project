@@ -1,13 +1,13 @@
 class Breakfast {
 
     private counter:number = 0;
-    private bar:HTMLElement;
-    private button:HTMLElement;
+    private bar:Bar;
+    private button:Button;
     private callback:EventListener;
         
     constructor() {
-        this.bar = <HTMLElement> document.getElementsByTagName("bar")[0];
-        this.button = <HTMLElement> document.getElementsByTagName("foodbutton")[0];
+        this.bar = new Bar() //<HTMLElement> document.getElementsByTagName("bar")[0];
+        this.button =  new Button() //<HTMLElement> document.getElementsByTagName("foodbutton")[0];
         this.button.style.cursor =  "auto";
         this.callback = (e:Event) => this.onClick(e);    
     }

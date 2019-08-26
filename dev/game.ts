@@ -22,10 +22,11 @@ class Game {
         }
     }
 
-    showPlayView(e:KeyboardEvent):void {
-        if(e.keyCode === 82){
-            document.body.innerHTML = ''
-            this.setView()
+    showPlayView(e:Event|KeyboardEvent, view:any):void {
+        if(e.code === "KeyR"){
+        window.removeEventListener("keydown", view.callback)
+        document.body.innerHTML = ''
+        this.setView()
         }
     }
 

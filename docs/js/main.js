@@ -2,8 +2,8 @@
 class Breakfast {
     constructor() {
         this.counter = 0;
-        this.bar = document.getElementsByTagName("bar")[0];
-        this.button = document.getElementsByTagName("foodbutton")[0];
+        this.bar = new Bar();
+        this.button = new Button();
         this.button.style.cursor = "auto";
         this.callback = (e) => this.onClick(e);
     }
@@ -47,8 +47,9 @@ class Game {
             this.view = new GameOverView(this);
         }
     }
-    showPlayView(e) {
-        if (e.keyCode === 82) {
+    showPlayView(e, view) {
+        if (e.code === "KeyR") {
+            window.removeEventListener("keydown", view.callback);
             document.body.innerHTML = '';
             this.setView();
         }
@@ -84,6 +85,7 @@ class GameObject extends HTMLElement {
 class Gandalf extends GameObject {
     constructor() {
         super();
+        this.behaviour = new Sleeping(this);
         this.width = 67;
         this.height = 119;
         this.x = Math.random() * (window.innerWidth - 67);
@@ -91,16 +93,33 @@ class Gandalf extends GameObject {
         this.tag = "gandalf";
         this.style.backgroundImage = "url(images/" + this.tag + "_hungry.png)";
         this.callback = (e) => this.onClick(e);
+        this.addEventListener("click", this.callback);
     }
     update() {
+        this.setBehaviour();
         this.behaviour.update();
         this.x += this.behaviour.speedx;
+        this.y += this.behaviour.speedy;
         super.update();
     }
     onClick(e) {
         console.log(e, "je klikt op gandalf. de listener wordt nu verwijderd.");
         this.style.cursor = "auto";
         this.removeEventListener("click", this.callback);
+    }
+    setBehaviour() {
+        let action = 'action';
+        switch (action) {
+            case "hungry":
+                this.behaviour = new Hungry(this);
+                break;
+            case "leaving":
+                this.behaviour = new Leaving(this);
+                break;
+            case "sleeping":
+                this.behaviour = new Sleeping(this);
+                break;
+        }
     }
     setTarget() {
         this.xTarget = Math.random() * (window.innerWidth - 80);
@@ -164,6 +183,9 @@ class Util {
 class Hungry {
     constructor(g) {
         this.gandalf = g;
+        this.gandalf.style.backgroundImage = "url(images/" + this.gandalf.tag + "_hungry.png)";
+        this.gandalf.style.cursor = "auto";
+        this.gandalf.setTarget();
     }
     update() {
         this.gandalf.x += this.speedx;
@@ -178,6 +200,11 @@ class Hungry {
 class Leaving {
     constructor(g) {
         this.gandalf = g;
+        this.gandalf.style.backgroundImage = "url(images/" + this.gandalf.tag + "_leaving.png)";
+        this.gandalf.style.cursor = "auto";
+        this.gandalf.xTarget = Math.random() * window.innerWidth;
+        this.gandalf.yTarget = window.innerHeight + 300;
+        this.gandalf.speedmultiplier += 1;
     }
     update() {
         this.gandalf.x += this.gandalf.xspeed;
@@ -192,15 +219,20 @@ class Leaving {
 }
 class Sleeping {
     constructor(g) {
-        this.speedx = 5;
         this.gandalf = g;
-    }
-    update() {
         this.gandalf.style.backgroundImage = "url(images/" + this.gandalf.tag + "_sleep.png)";
         this.gandalf.style.cursor = "pointer";
         this.gandalf.addEventListener("click", this.gandalf.callback);
     }
+    update() {
+    }
 }
+class Bar extends HTMLElement {
+}
+window.customElements.define("bar-component", Bar);
+class Button extends HTMLElement {
+}
+window.customElements.define("button-component", Button);
 class GameOverView {
     constructor(game) {
         console.log('gameover', game);
@@ -226,7 +258,8 @@ class PlayView {
 class StartView {
     constructor(game) {
         document.body.innerHTML = 'Klik R om het spel te starten';
-        window.addEventListener("keydown", (e) => game.showPlayView(e));
+        this.callback = (e) => game.showPlayView(e, this);
+        window.addEventListener("keydown", this.callback);
     }
     update() {
     }
