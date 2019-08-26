@@ -2,6 +2,11 @@ Inleverdocument PRG01-8 2018-2019
 
 OOP Fundamentals
 Beschrijf waar en waarom je code gebruik maakt van Inheritance, Composition en Encapsulation.
+Alle classes die GameObject extenden erven (inheritance) van die class alle onderdelen. Dit zijn onderdelen die je vrijwel altijd nodig
+hebt in de class die GameObject extends. Composition is zichtbaar in de Behaviour interface, en ook in de View interface, om
+polymorfisme toe te passen.
+Encapsulation is toegepast bij alle onderdelen waar mogelijk. Properties en methods die alleen benodigd zijn in de bijbehorende class
+zijn private. Eventueel is er een getter en setter toegepast als waardes in andere classes opgehaald of gezet moeten worden.
 
 Singleton
 Door de Game class een singleton te maken, los je het probleem van het eventueel meerdere malen instantieren van deze class op.
