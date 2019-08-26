@@ -1,12 +1,14 @@
-class Breakfast extends HTMLElement {
+class Breakfast extends HTMLElement implements Subject {
 
     private counter:number = 0;
     private bar:HTMLElement;
     private button:HTMLElement;
     private callback:EventListener;
+    observers:Observer[] = [];
         
     constructor() {
         super()
+    
         this.bar = <HTMLElement> document.getElementsByTagName("bar")[0];
         this.button = <HTMLElement> document.getElementsByTagName("foodbutton")[0];
         this.button.style.cursor =  "auto";
@@ -30,7 +32,27 @@ class Breakfast extends HTMLElement {
         this.button.removeEventListener("click", this.callback);
         this.button.classList.remove("blinking"); 
         this.button.style.cursor =  "auto";
+
+        for(let o of this.observers)
+        {
+            o.notify()
+            this.unsubscribe(o)
+        }
     }
+    public subscribe(o:Observer):void
+    {
+        console.log('subscribed een gandalf')
+        this.observers.push(o)
+    }
+
+    public unsubscribe(o:Observer):void
+    {
+        console.log('unsubscribed een gandalf')
+        let index = this.observers.indexOf(o, 0)
+        this.observers.splice(index, 1)
+    }
+
+
 }
 
 window.customElements.define("breakfast-component", Breakfast)

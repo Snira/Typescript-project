@@ -4,4 +4,4 @@ interface Behaviour {
     gandalf:Gandalf
 
     update():void
-   } 
+} 

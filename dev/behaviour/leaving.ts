@@ -3,7 +3,6 @@ class Leaving implements Behaviour {
     speedy:number
     gandalf:Gandalf
 
-
     constructor(g:Gandalf){
         this.gandalf = g
         this.gandalf.style.backgroundImage = "url(images/"+this.gandalf.tag+"_leaving.png)";
@@ -19,7 +18,7 @@ class Leaving implements Behaviour {
         let xdistance = this.gandalf.xTarget - this.gandalf.x;
         let ydistance = this.gandalf.yTarget - this.gandalf.y;
         if(xdistance < 4 && ydistance < 4) {
-            console.log("het karakter is uit beeld");
+            this.gandalf.remove()
         }
         Util.setSpeed(this.gandalf, xdistance, ydistance);
     }

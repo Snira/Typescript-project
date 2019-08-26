@@ -1,18 +1,14 @@
 /// <reference path="gameobject.ts" />
 
-class Gandalf extends GameObject {
-    behaviour: Behaviour;
+class Gandalf extends GameObject implements Observer{
+    private behaviour: Behaviour;
     public callback:EventListener;
     tag:string;
 
-    xTarget:number;
-    yTarget:number;
-    
     constructor() {
         super()
         this.tag = "gandalf";
         this.style.backgroundImage = "url(images/"+this.tag+"_hungry.png)";
-
 
         let action = Math.random() < 0.5 ? 'hungry' : 'sleeping'
         this.setBehaviour(action)
@@ -38,11 +34,11 @@ class Gandalf extends GameObject {
         this.removeEventListener("click", this.callback);
     }
 
-    private setBehaviour(action:string):void
+    public setBehaviour(action:string):void
     {
         switch(action){
             case "hungry" :
-                this.behaviour = new Hungry(this);
+                this.behaviour = new Hungry(this)
                 break;
             case "leaving" :
                 this.behaviour = new Leaving(this)
@@ -53,22 +49,17 @@ class Gandalf extends GameObject {
             }
     }
 
-    // private keydown(event:KeyboardEvent)
-    // {
-    //     switch(event.key){
-    //         case 'ArrowDown':
-    //             this.behaviour = new Braking(this)
-    //             break
-    //         case 'ArrowUp':
-    //             this.behaviour = new Driving(this)
-    //             break
-    //     }
-    // }
-
     public setTarget(){
         this.xTarget = Math.random() * (window.innerWidth-80);
         this.yTarget = Math.random() * (window.innerHeight-120);
     }
+
+    public notify():void
+    {
+        this.setBehaviour('leaving')
+        Game.getInstance().score++
+    }
+
 }
 
 window.customElements.define("gandalf-component", Gandalf)

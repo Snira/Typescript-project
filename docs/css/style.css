@@ -52,7 +52,7 @@ foodbutton {
     opacity:0.4;
 }
 
-card {
+card-component {
     width:269px; height:189px;
     background-image: url('../images/card.png');
     

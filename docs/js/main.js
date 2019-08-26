@@ -3,6 +3,7 @@ class Breakfast extends HTMLElement {
     constructor() {
         super();
         this.counter = 0;
+        this.observers = [];
         this.bar = document.getElementsByTagName("bar")[0];
         this.button = document.getElementsByTagName("foodbutton")[0];
         this.button.style.cursor = "auto";
@@ -23,6 +24,19 @@ class Breakfast extends HTMLElement {
         this.button.removeEventListener("click", this.callback);
         this.button.classList.remove("blinking");
         this.button.style.cursor = "auto";
+        for (let o of this.observers) {
+            o.notify();
+            this.unsubscribe(o);
+        }
+    }
+    subscribe(o) {
+        console.log('subscribed een gandalf');
+        this.observers.push(o);
+    }
+    unsubscribe(o) {
+        console.log('unsubscribed een gandalf');
+        let index = this.observers.indexOf(o, 0);
+        this.observers.splice(index, 1);
     }
 }
 window.customElements.define("breakfast-component", Breakfast);
@@ -52,7 +66,6 @@ class Game {
     showPlayView(e, view) {
         if (e.code === "KeyR") {
             window.removeEventListener("keydown", view.callback);
-            document.body.innerHTML = '<foodbutton></foodbutton><bar></bar><border></border><instructions></instructions>';
             this.setView();
         }
     }
@@ -126,6 +139,10 @@ class Gandalf extends GameObject {
     setTarget() {
         this.xTarget = Math.random() * (window.innerWidth - 80);
         this.yTarget = Math.random() * (window.innerHeight - 120);
+    }
+    notify() {
+        this.setBehaviour('leaving');
+        Game.getInstance().score++;
     }
 }
 window.customElements.define("gandalf-component", Gandalf);
@@ -214,7 +231,7 @@ class Leaving {
         let xdistance = this.gandalf.xTarget - this.gandalf.x;
         let ydistance = this.gandalf.yTarget - this.gandalf.y;
         if (xdistance < 4 && ydistance < 4) {
-            console.log("het karakter is uit beeld");
+            this.gandalf.remove();
         }
         Util.setSpeed(this.gandalf, xdistance, ydistance);
     }
@@ -242,13 +259,25 @@ class PlayView {
         this.gameObjects = [];
         document.body.innerHTML = '<foodbutton></foodbutton><bar></bar><border></border><instructions></instructions>';
         this.gameObjects.push(new Gandalf(), new Gandalf());
-        this.breakfast = new Breakfast();
         this.gameObjects.push(new Ork(), new Ork());
+        this.breakfast = new Breakfast();
+        for (let g of this.gameObjects) {
+            if (g instanceof Gandalf) {
+                this.breakfast.subscribe(g);
+            }
+        }
     }
     update() {
         for (let go of this.gameObjects) {
             this.breakfast.update();
             go.update();
+        }
+    }
+    addGandalfs() {
+        for (let i = 0; i < 5; i++) {
+            let gandalf = new Gandalf();
+            this.breakfast.subscribe(gandalf);
+            this.gameObjects.push(gandalf);
         }
     }
 }

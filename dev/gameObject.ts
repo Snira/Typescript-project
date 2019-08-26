@@ -9,6 +9,8 @@ class GameObject extends HTMLElement {
     public width:number;
     public height:number;
     public direction:number = 1;
+    public xTarget:number;
+    public yTarget:number;
 
     constructor() {
         super()

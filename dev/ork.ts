@@ -1,7 +1,5 @@
 class Ork extends GameObject{
     public facing:number = 1;
-    private xTarget:number;
-    private yTarget:number;
     private tag:string;
         
     constructor() {
