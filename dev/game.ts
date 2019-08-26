@@ -22,10 +22,10 @@ class Game {
         }
     }
 
-    showPlayView(e:Event|KeyboardEvent, view:any):void {
+    showPlayView(e:Event|KeyboardEvent, view:StartView):void {
         if(e.code === "KeyR"){
         window.removeEventListener("keydown", view.callback)
-        document.body.innerHTML = ''
+        document.body.innerHTML = '<foodbutton></foodbutton><bar></bar><border></border><instructions></instructions>'
         this.setView()
         }
     }

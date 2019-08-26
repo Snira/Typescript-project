@@ -10,39 +10,36 @@ class Gandalf extends GameObject {
     
     constructor() {
         super()
+        this.tag = "gandalf";
+        this.style.backgroundImage = "url(images/"+this.tag+"_hungry.png)";
 
-        this.behaviour = new Sleeping(this)
+
+        let action = Math.random() < 0.5 ? 'hungry' : 'sleeping'
+        this.setBehaviour(action)
         this.width = 67;
         this.height = 119;
         this.x = Math.random() * (window.innerWidth - 67);
         this.y = Math.random() * (window.innerHeight - 110);
-
-        this.tag = "gandalf";
-        this.style.backgroundImage = "url(images/"+this.tag+"_hungry.png)";
+    
         this.callback = (e:Event) => this.onClick(e);
         this.addEventListener("click", this.callback)
     }
 
-    public update(){
-        this.setBehaviour()
+    public update(){    
         this.behaviour.update()
-        // console.log(this.behaviour)
-        this.x += this.behaviour.speedx
-        this.y += this.behaviour.speedy
-
-
+        
         super.update()
     }
 
     public onClick(e:Event):void {
         console.log(e,"je klikt op gandalf. de listener wordt nu verwijderd.");
+        this.setBehaviour('hungry')
         this.style.cursor =  "auto";
         this.removeEventListener("click", this.callback);
     }
 
-    private setBehaviour():void
+    private setBehaviour(action:string):void
     {
-        let action = 'action'
         switch(action){
             case "hungry" :
                 this.behaviour = new Hungry(this);

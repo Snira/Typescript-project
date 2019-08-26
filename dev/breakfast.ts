@@ -1,13 +1,14 @@
-class Breakfast {
+class Breakfast extends HTMLElement {
 
     private counter:number = 0;
-    private bar:Bar;
-    private button:Button;
+    private bar:HTMLElement;
+    private button:HTMLElement;
     private callback:EventListener;
         
     constructor() {
-        this.bar = new Bar() //<HTMLElement> document.getElementsByTagName("bar")[0];
-        this.button =  new Button() //<HTMLElement> document.getElementsByTagName("foodbutton")[0];
+        super()
+        this.bar = <HTMLElement> document.getElementsByTagName("bar")[0];
+        this.button = <HTMLElement> document.getElementsByTagName("foodbutton")[0];
         this.button.style.cursor =  "auto";
         this.callback = (e:Event) => this.onClick(e);    
     }
@@ -31,3 +32,5 @@ class Breakfast {
         this.button.style.cursor =  "auto";
     }
 }
+
+window.customElements.define("breakfast-component", Breakfast)

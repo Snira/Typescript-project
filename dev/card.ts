@@ -1,11 +1,12 @@
-class Card  {
+class Card extends HTMLElement {
         
     public div: HTMLElement;
 
     constructor(x:number) {     
-        this.div = document.createElement("card");
-        document.body.appendChild(this.div);
-        this.div.style.left = x + "px";
+        super()
+        this.style.left = x + "px";
     }
 
 }
+
+window.customElements.define("card-component", Card)

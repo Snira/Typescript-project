@@ -11,8 +11,8 @@ class Hungry implements Behaviour {
     }
 
     public update():void {
-        this.gandalf.x += this.speedx;
-        this.gandalf.y += this.speedy;
+        this.gandalf.x += this.gandalf.xspeed;
+        this.gandalf.y += this.gandalf.yspeed;
         let xdistance = this.gandalf.xTarget - this.gandalf.x;
         let ydistance = this.gandalf.yTarget - this.gandalf.y;
         if(xdistance < 4 && ydistance < 4) this.gandalf.setTarget();

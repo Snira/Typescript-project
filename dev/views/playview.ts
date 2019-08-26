@@ -3,6 +3,7 @@ class PlayView implements View{
     private breakfast:Breakfast;
 
     constructor() {
+        document.body.innerHTML = '<foodbutton></foodbutton><bar></bar><border></border><instructions></instructions>'
         this.gameObjects.push(new Gandalf(), new Gandalf())
         this.breakfast = new Breakfast()
         this.gameObjects.push(new Ork(), new Ork())

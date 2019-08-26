@@ -3,8 +3,9 @@ class StartView implements View {
     
     constructor(game:Game)
     {
-        document.body.innerHTML = 'Klik R om het spel te starten'
-        this.callback = (e:Event) => game.showPlayView(e, this)
+        document.body.innerHTML =
+        '<p> Klik R om het spel te starten </p>'
+	    this.callback = (e:Event) => game.showPlayView(e, this)
         window.addEventListener("keydown", this.callback)
     }
 

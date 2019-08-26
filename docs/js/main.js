@@ -1,9 +1,10 @@
 "use strict";
-class Breakfast {
+class Breakfast extends HTMLElement {
     constructor() {
+        super();
         this.counter = 0;
-        this.bar = new Bar();
-        this.button = new Button();
+        this.bar = document.getElementsByTagName("bar")[0];
+        this.button = document.getElementsByTagName("foodbutton")[0];
         this.button.style.cursor = "auto";
         this.callback = (e) => this.onClick(e);
     }
@@ -24,13 +25,14 @@ class Breakfast {
         this.button.style.cursor = "auto";
     }
 }
-class Card {
+window.customElements.define("breakfast-component", Breakfast);
+class Card extends HTMLElement {
     constructor(x) {
-        this.div = document.createElement("card");
-        document.body.appendChild(this.div);
-        this.div.style.left = x + "px";
+        super();
+        this.style.left = x + "px";
     }
 }
+window.customElements.define("card-component", Card);
 class Game {
     constructor() {
         this.score = 0;
@@ -50,7 +52,7 @@ class Game {
     showPlayView(e, view) {
         if (e.code === "KeyR") {
             window.removeEventListener("keydown", view.callback);
-            document.body.innerHTML = '';
+            document.body.innerHTML = '<foodbutton></foodbutton><bar></bar><border></border><instructions></instructions>';
             this.setView();
         }
     }
@@ -75,6 +77,8 @@ class GameObject extends HTMLElement {
         this.yspeed = 0;
         this.speedmultiplier = 1;
         this.direction = 1;
+        this.x = Math.random() * (window.innerWidth - 67);
+        this.y = Math.random() * (window.innerHeight - 110);
         document.body.appendChild(this);
     }
     update() {
@@ -85,30 +89,28 @@ class GameObject extends HTMLElement {
 class Gandalf extends GameObject {
     constructor() {
         super();
-        this.behaviour = new Sleeping(this);
+        this.tag = "gandalf";
+        this.style.backgroundImage = "url(images/" + this.tag + "_hungry.png)";
+        let action = Math.random() < 0.5 ? 'hungry' : 'sleeping';
+        this.setBehaviour(action);
         this.width = 67;
         this.height = 119;
         this.x = Math.random() * (window.innerWidth - 67);
         this.y = Math.random() * (window.innerHeight - 110);
-        this.tag = "gandalf";
-        this.style.backgroundImage = "url(images/" + this.tag + "_hungry.png)";
         this.callback = (e) => this.onClick(e);
         this.addEventListener("click", this.callback);
     }
     update() {
-        this.setBehaviour();
         this.behaviour.update();
-        this.x += this.behaviour.speedx;
-        this.y += this.behaviour.speedy;
         super.update();
     }
     onClick(e) {
         console.log(e, "je klikt op gandalf. de listener wordt nu verwijderd.");
+        this.setBehaviour('hungry');
         this.style.cursor = "auto";
         this.removeEventListener("click", this.callback);
     }
-    setBehaviour() {
-        let action = 'action';
+    setBehaviour(action) {
         switch (action) {
             case "hungry":
                 this.behaviour = new Hungry(this);
@@ -188,8 +190,8 @@ class Hungry {
         this.gandalf.setTarget();
     }
     update() {
-        this.gandalf.x += this.speedx;
-        this.gandalf.y += this.speedy;
+        this.gandalf.x += this.gandalf.xspeed;
+        this.gandalf.y += this.gandalf.yspeed;
         let xdistance = this.gandalf.xTarget - this.gandalf.x;
         let ydistance = this.gandalf.yTarget - this.gandalf.y;
         if (xdistance < 4 && ydistance < 4)
@@ -227,12 +229,6 @@ class Sleeping {
     update() {
     }
 }
-class Bar extends HTMLElement {
-}
-window.customElements.define("bar-component", Bar);
-class Button extends HTMLElement {
-}
-window.customElements.define("button-component", Button);
 class GameOverView {
     constructor(game) {
         console.log('gameover', game);
@@ -244,6 +240,7 @@ class GameOverView {
 class PlayView {
     constructor() {
         this.gameObjects = [];
+        document.body.innerHTML = '<foodbutton></foodbutton><bar></bar><border></border><instructions></instructions>';
         this.gameObjects.push(new Gandalf(), new Gandalf());
         this.breakfast = new Breakfast();
         this.gameObjects.push(new Ork(), new Ork());
@@ -257,7 +254,8 @@ class PlayView {
 }
 class StartView {
     constructor(game) {
-        document.body.innerHTML = 'Klik R om het spel te starten';
+        document.body.innerHTML =
+            '<p> Klik R om het spel te starten </p>';
         this.callback = (e) => game.showPlayView(e, this);
         window.addEventListener("keydown", this.callback);
     }

@@ -12,6 +12,8 @@ class GameObject extends HTMLElement {
 
     constructor() {
         super()
+        this.x = Math.random() * (window.innerWidth - 67);
+        this.y = Math.random() * (window.innerHeight - 110);
         document.body.appendChild(this)
     }
 
