@@ -1,11 +1,7 @@
-/// <reference path="view.ts" />
-
-class PlayView extends View{
+class PlayView implements View{
     gameObjects:GameObject[] = []
 
     constructor() {
-        super()
-        Game.getInstance()
         this.gameObjects.push(new Car(), new Car())
         
     }
@@ -15,6 +11,7 @@ class PlayView extends View{
             go.update()
 
             if(Util.checkCollision(this.gameObjects[0], this.gameObjects[1])){
+                Game.getInstance().gameOver = true;
                 go.remove()
             }
         }

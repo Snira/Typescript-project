@@ -1,11 +1,9 @@
-class StartView extends View {
-    game:Game
+class StartView implements View {
+
     constructor(game:Game)
     {
-        super()
-
+        document.body.innerHTML = 'Klik R om het spel te starten'
         window.addEventListener("keydown", (e:KeyboardEvent) => game.showPlayView(e))
-
     }
 
     public update():void{

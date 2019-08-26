@@ -44,6 +44,7 @@ class Car extends GameObject {
 window.customElements.define("car-component", Car);
 class Game {
     constructor() {
+        this.score = 0;
         this.gameOver = false;
         this.view = new StartView(this);
         this.gameLoop();
@@ -53,9 +54,13 @@ class Game {
         if (!this.gameOver) {
             requestAnimationFrame(() => this.gameLoop());
         }
+        else {
+            this.view = new GameOverView(this);
+        }
     }
     showPlayView(e) {
-        if (e.key == 'ArrowUp') {
+        if (e.keyCode === 82) {
+            document.body.innerHTML = '';
             this.setView();
         }
     }
@@ -111,37 +116,34 @@ class Idle {
         this.car = c;
     }
     update() {
-        console.log('car is now idle');
     }
 }
-class View {
-}
-class GameOverView extends View {
-    constructor() {
-        super();
+class GameOverView {
+    constructor(game) {
+        console.log('gameover', game);
+        document.body.innerHTML = 'Gameover: Eindscore =' + game.score;
     }
     update() {
     }
 }
-class PlayView extends View {
+class PlayView {
     constructor() {
-        super();
         this.gameObjects = [];
-        Game.getInstance();
         this.gameObjects.push(new Car(), new Car());
     }
     update() {
         for (let go of this.gameObjects) {
             go.update();
             if (Util.checkCollision(this.gameObjects[0], this.gameObjects[1])) {
+                Game.getInstance().gameOver = true;
                 go.remove();
             }
         }
     }
 }
-class StartView extends View {
+class StartView {
     constructor(game) {
-        super();
+        document.body.innerHTML = 'Klik R om het spel te starten';
         window.addEventListener("keydown", (e) => game.showPlayView(e));
     }
     update() {

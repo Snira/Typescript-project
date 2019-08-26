@@ -1,10 +1,8 @@
-/// <reference path="view.ts" />
+class GameOverView implements View{
 
-class GameOverView extends View{
-
-    constructor() {
-        super()
-        
+    constructor(game:Game) {
+        console.log('gameover', game)
+        document.body.innerHTML = 'Gameover: Eindscore =' + game.score
     }
 
     public update(): void {

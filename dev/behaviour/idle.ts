@@ -7,6 +7,6 @@ class Idle implements Behaviour {
     }
 
     public update():void {
-        console.log('car is now idle')
+        
     }
    }

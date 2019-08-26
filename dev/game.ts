@@ -1,6 +1,7 @@
 class Game {
     private static instance: Game
-    view:any
+    score:number = 0
+    view:View
     gameOver:boolean = false
 
     private constructor(){
@@ -16,10 +17,14 @@ class Game {
         if (!this.gameOver) {
             requestAnimationFrame(() => this.gameLoop())
         }
+        else{
+            this.view = new GameOverView(this)
+        }
     }
 
     showPlayView(e:KeyboardEvent):void {
-        if(e.key == 'ArrowUp'){
+        if(e.keyCode === 82){
+            document.body.innerHTML = ''
             this.setView()
         }
     }
