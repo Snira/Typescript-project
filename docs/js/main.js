@@ -19,14 +19,12 @@ class Breakfast extends HTMLElement {
         }
     }
     onClick(e) {
-        console.log("Ontbijtjes uitdelen!", e);
         this.counter = 0;
         this.button.removeEventListener("click", this.callback);
         this.button.classList.remove("blinking");
         this.button.style.cursor = "auto";
         for (let o of this.observers) {
-            o.notify();
-            this.unsubscribe(o);
+            o.notify(this);
         }
     }
     subscribe(o) {
@@ -56,6 +54,9 @@ class Game {
     }
     gameLoop() {
         this.view.update();
+        if (this.score > 20) {
+            this.gameOver = true;
+        }
         if (!this.gameOver) {
             requestAnimationFrame(() => this.gameLoop());
         }
@@ -73,6 +74,9 @@ class Game {
         if (this.view instanceof StartView) {
             this.view = new PlayView();
         }
+    }
+    removeObject(ob) {
+        ob.remove();
     }
     static getInstance() {
         return this.instance || (this.instance = new Game());
@@ -140,9 +144,12 @@ class Gandalf extends GameObject {
         this.xTarget = Math.random() * (window.innerWidth - 80);
         this.yTarget = Math.random() * (window.innerHeight - 120);
     }
-    notify() {
-        this.setBehaviour('leaving');
-        Game.getInstance().score++;
+    notify(o) {
+        if (this.behaviour instanceof Hungry) {
+            this.setBehaviour('leaving');
+            Game.getInstance().score++;
+            o.unsubscribe(this);
+        }
     }
 }
 window.customElements.define("gandalf-component", Gandalf);
@@ -153,8 +160,6 @@ class Ork extends GameObject {
         this.tag = "ork";
         this.width = 67;
         this.height = 119;
-        this.x = Math.random() * (window.innerWidth - 67);
-        this.y = Math.random() * (window.innerHeight - 110);
         this.speedmultiplier = Math.random() + 1;
         this.style.backgroundImage = "url(images/" + this.tag + "_hungry.png)";
         this.style.cursor = "auto";
@@ -231,7 +236,7 @@ class Leaving {
         let xdistance = this.gandalf.xTarget - this.gandalf.x;
         let ydistance = this.gandalf.yTarget - this.gandalf.y;
         if (xdistance < 4 && ydistance < 4) {
-            this.gandalf.remove();
+            Game.getInstance().removeObject(this.gandalf);
         }
         Util.setSpeed(this.gandalf, xdistance, ydistance);
     }
@@ -246,6 +251,16 @@ class Sleeping {
     update() {
     }
 }
+class GandalfFactory {
+    createObject() {
+        return new Gandalf();
+    }
+}
+class OrkFactory {
+    createObject() {
+        return new Ork();
+    }
+}
 class GameOverView {
     constructor(game) {
         console.log('gameover', game);
@@ -258,9 +273,9 @@ class PlayView {
     constructor() {
         this.gameObjects = [];
         document.body.innerHTML = '<foodbutton></foodbutton><bar></bar><border></border><instructions></instructions>';
-        this.gameObjects.push(new Gandalf(), new Gandalf());
-        this.gameObjects.push(new Ork(), new Ork());
         this.breakfast = new Breakfast();
+        this.addGandalfs(4);
+        this.addOrks(3);
         for (let g of this.gameObjects) {
             if (g instanceof Gandalf) {
                 this.breakfast.subscribe(g);
@@ -268,16 +283,32 @@ class PlayView {
         }
     }
     update() {
+        let score = Game.getInstance().score;
+        console.log(score);
         for (let go of this.gameObjects) {
             this.breakfast.update();
             go.update();
         }
+        if (score % 4 == 1) {
+            this.addGandalfs(5);
+        }
+        if (score >= 20) {
+            this.view = new GameOverView;
+        }
     }
-    addGandalfs() {
-        for (let i = 0; i < 5; i++) {
-            let gandalf = new Gandalf();
+    addGandalfs(amount) {
+        this.factory = new GandalfFactory();
+        for (let i = 0; i < amount; i++) {
+            let gandalf = this.factory.createObject();
             this.breakfast.subscribe(gandalf);
             this.gameObjects.push(gandalf);
+        }
+    }
+    addOrks(amount) {
+        this.factory = new OrkFactory();
+        for (let i = 0; i < amount; i++) {
+            let ork = this.factory.createObject();
+            this.gameObjects.push(ork);
         }
     }
 }

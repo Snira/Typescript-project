@@ -27,7 +27,6 @@ class Breakfast extends HTMLElement implements Subject {
     }
 
     private onClick(e:Event):void {
-        console.log("Ontbijtjes uitdelen!",e);
         this.counter = 0;
         this.button.removeEventListener("click", this.callback);
         this.button.classList.remove("blinking"); 
@@ -35,8 +34,7 @@ class Breakfast extends HTMLElement implements Subject {
 
         for(let o of this.observers)
         {
-            o.notify()
-            this.unsubscribe(o)
+            o.notify(this)
         }
     }
     public subscribe(o:Observer):void

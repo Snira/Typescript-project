@@ -54,10 +54,13 @@ class Gandalf extends GameObject implements Observer{
         this.yTarget = Math.random() * (window.innerHeight-120);
     }
 
-    public notify():void
+    public notify(o:Breakfast):void
     {
-        this.setBehaviour('leaving')
-        Game.getInstance().score++
+        if(this.behaviour instanceof Hungry){
+            this.setBehaviour('leaving')
+            Game.getInstance().score++
+            o.unsubscribe(this)
+        }      
     }
 
 }

@@ -1,0 +1,3 @@
+interface GameObjectFactory {
+    createObject():GameObject;
+}

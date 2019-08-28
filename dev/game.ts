@@ -14,6 +14,11 @@ class Game {
     {
         this.view.update()
 
+        if(this.score > 20)
+        {
+            this.gameOver = true
+        }
+
         if (!this.gameOver) {
             requestAnimationFrame(() => this.gameLoop())
         }
@@ -34,6 +39,11 @@ class Game {
         if(this.view instanceof StartView){
             this.view = new PlayView()
         }
+    }
+
+    removeObject(ob:GameObject):void
+    {
+        ob.remove()
     }
 
     public static getInstance(): Game

@@ -9,8 +9,6 @@ class Ork extends GameObject{
         
         this.width = 67;
         this.height = 119;
-        this.x = Math.random() * (window.innerWidth - 67);
-        this.y = Math.random() * (window.innerHeight - 110);
         this.speedmultiplier = Math.random() + 1;
 
         this.style.backgroundImage = "url(images/"+this.tag+"_hungry.png)";

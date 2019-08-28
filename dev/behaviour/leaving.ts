@@ -18,7 +18,7 @@ class Leaving implements Behaviour {
         let xdistance = this.gandalf.xTarget - this.gandalf.x;
         let ydistance = this.gandalf.yTarget - this.gandalf.y;
         if(xdistance < 4 && ydistance < 4) {
-            this.gandalf.remove()
+            Game.getInstance().removeObject(this.gandalf)
         }
         Util.setSpeed(this.gandalf, xdistance, ydistance);
     }

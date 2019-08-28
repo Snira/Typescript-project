@@ -1,7 +1,6 @@
 Inleverdocument PRG01-8 2018-2019
 
 OOP Fundamentals
-Beschrijf waar en waarom je code gebruik maakt van Inheritance, Composition en Encapsulation.
 Alle classes die GameObject extenden erven (inheritance) van die class alle onderdelen. Dit zijn onderdelen die je vrijwel altijd nodig
 hebt in de class die GameObject extends. Composition is zichtbaar in de Behaviour interface, en ook in de View interface, om
 polymorfisme toe te passen.
@@ -25,19 +24,9 @@ Door de Strategy pattern toe te passen op de baheviour van GameObjects, kunnen b
 Ook is op deze manier bij elk GameObject slechts 1 soort behaviour actief, zodat deze niet botsen met andere behaviours.
 
 Observer
-Beschrijf welk programmeerprobleem je oplost met de Observer en waarom het patroon zich goed leent voor dit probleem.
-Op het moment dat bij object x iets gebeurd, moeten objecten x daar op anticiperen. Hier is het observer pattern zeer geschikt voor.
-Door bij het instantieren van objecten x zich te subscriben op object x, kan er bij de notify van object x meteen
-geanticipeerd worden door de classes die hier op subscribed zijn.
+Observer pattern heb ik geprobeerd toe te passen op de Breakfast en Gandalf. Wanneer een Gandalf geinstantieerd word,
+subscribed deze op de Breakfast. Wanneer er vervolgens een Breakfast uitgedeeld word, word bij deze Gandalf de notify()
+functie aangeroepen waarna de benodigde functionaliteit plaatsvind.
 
 Finished product
 De game heeft een startscherm en een eindscherm met een scoreweergave.
-
-Finished product components
-De game heeft een startscherm en een eindscherm met een scoreweergave.
-Je score komt in een lijst met namen en scores. De lijst wordt bewaard als de browser is afgesloten. • De game bevat local of online multiplayer.
-De game werkt op mobiele schermen met touch controls.
-De game gebruikt alternatieve input zoals de camera, microfoon, gyroscoop, locatiebepaling.
-De game heeft levels met een oplopende moeilijkheidsgraad.
-Geluid en muziek is een integraal onderdeel van de game.
-De game werkt met Canvas in plaats van DOM elementen.
